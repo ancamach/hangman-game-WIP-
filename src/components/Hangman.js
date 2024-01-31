@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { iniciarNuevoJuego} from '../store/hangmanThunks';
+import { iniciarNuevoJuego } from '../store/hangmanThunks';
 import { guessLetter, checkGameOver } from '../store/hangmanSlice';
 import { selectHangmanState } from '../store/selectors';
 
@@ -17,46 +17,19 @@ const HangmanGame = () => {
     dispatch(checkGameOver());
   };
 
+  const letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', 'Á', 'É', 'Í', 'Ó', 'Ú'];
+
   return (
     <div>
       {isGameOver ? <p>¡Juego terminado!</p> : <p>¡Buena suerte!</p>}
-        <button onClick={() => handleGuess('A')}>A</button>
-        <button onClick={() => handleGuess('B')}>B</button>
-        <button onClick={() => handleGuess('C')}>C</button>
-        <button onClick={() => handleGuess('D')}>D</button>
-        <button onClick={() => handleGuess('E')}>E</button>
-        <button onClick={() => handleGuess('F')}>F</button>
-        <button onClick={() => handleGuess('G')}>G</button>
-        <button onClick={() => handleGuess('H')}>H</button>
-        <button onClick={() => handleGuess('I')}>I</button>
-        <button onClick={() => handleGuess('J')}>J</button>
-        <button onClick={() => handleGuess('K')}>K</button>
-        <button onClick={() => handleGuess('L')}>L</button>
-        <button onClick={() => handleGuess('M')}>M</button>
-        <button onClick={() => handleGuess('N')}>N</button>
-        <button onClick={() => handleGuess('Ñ')}>Ñ</button>
-        <button onClick={() => handleGuess('O')}>O</button>
-        <button onClick={() => handleGuess('P')}>P</button>
-        <button onClick={() => handleGuess('Q')}>Q</button>
-        <button onClick={() => handleGuess('R')}>R</button>
-        <button onClick={() => handleGuess('S')}>S</button>
-        <button onClick={() => handleGuess('T')}>T</button>
-        <button onClick={() => handleGuess('U')}>U</button>
-        <button onClick={() => handleGuess('V')}>V</button>
-        <button onClick={() => handleGuess('W')}>W</button>
-        <button onClick={() => handleGuess('X')}>X</button>
-        <button onClick={() => handleGuess('Y')}>Y</button>
-        <button onClick={() => handleGuess('Z')}>Z</button>
-        <button onClick={() => handleGuess(' ')}>ESPACIO</button>
-        <button onClick={() => handleGuess('Á')}>Á</button>
-        <button onClick={() => handleGuess('É')}>É</button>
-        <button onClick={() => handleGuess('Í')}>Í</button>
-        <button onClick={() => handleGuess('Ó')}>Ó</button>
-        <button onClick={() => handleGuess('Ú')}>Ú</button>
+
+      {letras.map((letra) => (
+        <button key={letra} onClick={() => handleGuess(letra)}>
+          {letra}
+        </button>
+      ))}
     </div>
   );
 };
 
 export default HangmanGame;
-
-
