@@ -14,7 +14,7 @@ const hangmanSlice = createSlice({
       state.word = action.payload;
     },
     guessLetter: (state, action) => {
-        const guessedLetter = action.payload;
+        const guessedLetter = action.payload.toLowerCase();
 
         if (!state.guessedLetters.includes(guessedLetter)) {
             state.guessedLetters.push(guessedLetter);

@@ -34,6 +34,7 @@ const HangmanGame = () => {
         <button onClick={() => handleGuess('L')}>L</button>
         <button onClick={() => handleGuess('M')}>M</button>
         <button onClick={() => handleGuess('N')}>N</button>
+        <button onClick={() => handleGuess('Ñ')}>Ñ</button>
         <button onClick={() => handleGuess('O')}>O</button>
         <button onClick={() => handleGuess('P')}>P</button>
         <button onClick={() => handleGuess('Q')}>Q</button>
