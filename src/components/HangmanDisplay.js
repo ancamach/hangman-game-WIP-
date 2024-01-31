@@ -8,13 +8,13 @@ const HangmanDisplay = () => {
 
   return (
     <div>
-      <p>{displayWord}</p>
+      <p className="text-2xl font-bold mb-4">{displayWord}</p>
       <p>Letras Adivinadas: {guessedLetters.join(', ')}</p>
       <p>Incorrectas: {incorrectGuesses}/{maxIncorrectGuesses}</p>
       {isGameOver && (
         <>
           <p>La palabra correcta era: {isGameOver && displayWord}</p>
-          {incorrectGuesses >= maxIncorrectGuesses && <p>¡Has perdido!</p>}
+          {incorrectGuesses >= maxIncorrectGuesses && <p className="text-red-600 font-bold">¡Has perdido!</p>}
         </>
       )}
     </div>

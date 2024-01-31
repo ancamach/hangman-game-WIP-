@@ -6,7 +6,7 @@ import { selectHangmanState } from '../store/selectors';
 
 const HangmanGame = () => {
   const dispatch = useDispatch();
-  const { guessedLetters, isGameOver } = useSelector(selectHangmanState);
+  const { isGameOver } = useSelector(selectHangmanState);
 
   useEffect(() => {
     dispatch(iniciarNuevoJuego());
@@ -47,6 +47,7 @@ const HangmanGame = () => {
         <button onClick={() => handleGuess('X')}>X</button>
         <button onClick={() => handleGuess('Y')}>Y</button>
         <button onClick={() => handleGuess('Z')}>Z</button>
+        <button onClick={() => handleGuess(' ')}>ESPACIO</button>
     </div>
   );
 };

@@ -14,21 +14,40 @@ const hangmanSlice = createSlice({
       state.word = action.payload;
     },
     guessLetter: (state, action) => {
-        const guessedLetter = action.payload.toLowerCase();
+      const guessedLetter = action.payload.toLowerCase();
 
-        if (!state.guessedLetters.includes(guessedLetter)) {
-            state.guessedLetters.push(guessedLetter);
+      if (!state.guessedLetters.includes(guessedLetter)) {
+        state.guessedLetters.push(guessedLetter);
 
-        if (!state.word.includes(guessedLetter)) {
-            state.incorrectGuesses += 1
-            }
+        const normalizedWord = state.word
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase();
+
+        const normalizedGuessedLetter = guessedLetter
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '');
+
+        if (!normalizedWord.includes(normalizedGuessedLetter)) {
+          state.incorrectGuesses += 1;
         }
-        const allLettersGuessed = state.word.split('').every(letter => state.guessedLetters.includes(letter));
+      }
+
+      const normalizedWord = state.word
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      const allLettersGuessed = normalizedWord.split('').every((letter) => state.guessedLetters.includes(letter));
       state.isGameOver = state.incorrectGuesses >= state.maxIncorrectGuesses || allLettersGuessed;
     },
     checkGameOver: (state) => {
-        state.isGameOver = state.incorrectGuesses >= state.maxIncorrectGuesses ||
-        state.word.split('').every(letter => state.guessedLetters.includes(letter));
+      const normalizedWord = state.word
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      state.isGameOver = state.incorrectGuesses >= state.maxIncorrectGuesses || normalizedWord.split('').every((letter) => state.guessedLetters.includes(letter));
     },
   },
 });
