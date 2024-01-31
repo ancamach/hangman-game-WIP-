@@ -48,6 +48,11 @@ const HangmanGame = () => {
         <button onClick={() => handleGuess('Y')}>Y</button>
         <button onClick={() => handleGuess('Z')}>Z</button>
         <button onClick={() => handleGuess(' ')}>ESPACIO</button>
+        <button onClick={() => handleGuess('Á')}>Á</button>
+        <button onClick={() => handleGuess('É')}>É</button>
+        <button onClick={() => handleGuess('Í')}>Í</button>
+        <button onClick={() => handleGuess('Ó')}>Ó</button>
+        <button onClick={() => handleGuess('Ú')}>Ú</button>
     </div>
   );
 };
