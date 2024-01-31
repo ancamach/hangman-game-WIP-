@@ -1,7 +1,6 @@
 import { setWord } from './hangmanSlice';
 
 async function obtenerPalabraAlAzar() {
-      const apiKey = 'YOUR_API_KEY';
       const apiUrl = `https://random-word-api.herokuapp.com/word?lang=es`;
   
       const response = await fetch(apiUrl);
